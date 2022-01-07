@@ -7,9 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="employer_users")
 @PrimaryKeyJoinColumn(name="user_id")
@@ -26,15 +30,5 @@ public class EmployerUser extends User {
 	
 	@Column(name="system_user_verified")
 	protected boolean systemUserVerified;
-	
-	public EmployerUser() {}
-
-	public EmployerUser(int id, String email, String passwordHash, boolean emailVerified, String companyName, String website, String phone, boolean systemUserVerified) {
-		super(id, email, passwordHash, emailVerified);
-		this.companyName = companyName;
-		this.website = website;
-		this.phone = phone;
-		this.systemUserVerified = systemUserVerified;
-	}
 
 }

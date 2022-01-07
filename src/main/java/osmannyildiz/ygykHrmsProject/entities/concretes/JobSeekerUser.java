@@ -7,9 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="job_seeker_users")
 @PrimaryKeyJoinColumn(name="user_id")
@@ -26,15 +30,5 @@ public class JobSeekerUser extends User {
 	
 	@Column(name="birth_year")
 	protected String birthYear;
-	
-	public JobSeekerUser() {}
-
-	public JobSeekerUser(int id, String email, String passwordHash, boolean emailVerified, String name, String surname, String tckn, String birthYear) {
-		super(id, email, passwordHash, emailVerified);
-		this.name = name;
-		this.surname = surname;
-		this.tckn = tckn;
-		this.birthYear = birthYear;
-	}
 
 }
