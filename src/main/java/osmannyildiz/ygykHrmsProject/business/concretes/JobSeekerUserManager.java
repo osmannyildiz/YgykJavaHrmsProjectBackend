@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import osmannyildiz.coreProject.utilities.results.DataResult;
+import osmannyildiz.coreProject.utilities.results.SuccessDataResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IJobSeekerUserService;
 import osmannyildiz.ygykHrmsProject.dataAccess.abstracts.IJobSeekerUserDao;
 import osmannyildiz.ygykHrmsProject.entities.concretes.JobSeekerUser;
@@ -20,8 +22,8 @@ public class JobSeekerUserManager implements IJobSeekerUserService {
 	}
 
 	@Override
-	public List<JobSeekerUser> getAll() {
-		return jobSeekerUserDao.findAll();
+	public DataResult<List<JobSeekerUser>> getAll() {
+		return new SuccessDataResult<List<JobSeekerUser>>(jobSeekerUserDao.findAll());
 	}
 	
 }

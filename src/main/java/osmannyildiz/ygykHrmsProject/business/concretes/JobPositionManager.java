@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import osmannyildiz.coreProject.utilities.results.DataResult;
+import osmannyildiz.coreProject.utilities.results.SuccessDataResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IJobPositionService;
 import osmannyildiz.ygykHrmsProject.dataAccess.abstracts.IJobPositionDao;
 import osmannyildiz.ygykHrmsProject.entities.concretes.JobPosition;
@@ -20,8 +22,8 @@ public class JobPositionManager implements IJobPositionService {
 	}
 
 	@Override
-	public List<JobPosition> getAll() {
-		return jobPositionDao.findAll();
+	public DataResult<List<JobPosition>> getAll() {
+		return new SuccessDataResult<List<JobPosition>>(jobPositionDao.findAll());
 	}
 	
 }

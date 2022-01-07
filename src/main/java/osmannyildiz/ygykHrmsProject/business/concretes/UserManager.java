@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import osmannyildiz.coreProject.utilities.results.DataResult;
+import osmannyildiz.coreProject.utilities.results.SuccessDataResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IUserService;
 import osmannyildiz.ygykHrmsProject.dataAccess.abstracts.IUserDao;
 import osmannyildiz.ygykHrmsProject.entities.concretes.User;
@@ -20,8 +22,8 @@ public class UserManager implements IUserService {
 	}
 
 	@Override
-	public List<User> getAll() {
-		return userDao.findAll();
+	public DataResult<List<User>> getAll() {
+		return new SuccessDataResult<List<User>>(userDao.findAll());
 	}
 	
 }

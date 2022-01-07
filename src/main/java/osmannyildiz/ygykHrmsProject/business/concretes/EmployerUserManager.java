@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import osmannyildiz.coreProject.utilities.results.DataResult;
+import osmannyildiz.coreProject.utilities.results.SuccessDataResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IEmployerUserService;
 import osmannyildiz.ygykHrmsProject.dataAccess.abstracts.IEmployerUserDao;
 import osmannyildiz.ygykHrmsProject.entities.concretes.EmployerUser;
@@ -20,8 +22,8 @@ public class EmployerUserManager implements IEmployerUserService {
 	}
 
 	@Override
-	public List<EmployerUser> getAll() {
-		return employerUserDao.findAll();
+	public DataResult<List<EmployerUser>> getAll() {
+		return new SuccessDataResult<List<EmployerUser>>(employerUserDao.findAll());
 	}
 	
 }
