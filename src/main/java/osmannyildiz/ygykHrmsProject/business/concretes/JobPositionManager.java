@@ -35,7 +35,7 @@ public class JobPositionManager implements IJobPositionService {
 		
 		boolean nameExists = jobPositionWithNameExists(jobPosition.getName()).getData();
 		if (nameExists) {
-			return new ErrorDataResult("Bu isimde bir iş pozisyonu halihazırda mevcut.");
+			return new ErrorDataResult<JobPosition>("Bu isimde bir iş pozisyonu halihazırda mevcut.");
 		}
 		
 		return new SuccessDataResult<JobPosition>(jobPositionDao.save(jobPosition), "İş pozisyonu eklendi.");
@@ -43,11 +43,7 @@ public class JobPositionManager implements IJobPositionService {
 
 	@Override
 	public DataResult<Boolean> jobPositionWithNameExists(String name) {
-		ExampleMatcher matcher = ExampleMatcher.matchingAll().withIgnorePaths("id");
-		JobPosition exampleJobPosition = new JobPosition();
-		exampleJobPosition.setName(name);
-		Example<JobPosition> example = Example.of(exampleJobPosition, matcher);
-		boolean exists = jobPositionDao.exists(example);
+		boolean exists = jobPositionDao.countByName(name) > 0;
 		return new SuccessDataResult<Boolean>(exists);
 	}
 	

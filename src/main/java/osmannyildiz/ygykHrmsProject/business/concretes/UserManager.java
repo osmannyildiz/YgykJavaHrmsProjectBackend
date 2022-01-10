@@ -46,11 +46,7 @@ public class UserManager implements IUserService {
 
 	@Override
 	public DataResult<Boolean> userWithEmailExists(String email) {
-		ExampleMatcher matcher = ExampleMatcher.matchingAll().withIgnorePaths("id", "emailVerified");
-		User exampleUser = new User();
-		exampleUser.setEmail(email);
-		Example<User> example = Example.of(exampleUser, matcher);
-		boolean exists = userDao.exists(example);
+		boolean exists = userDao.countByEmail(email) > 0;
 		return new SuccessDataResult<Boolean>(exists);
 	}
 	

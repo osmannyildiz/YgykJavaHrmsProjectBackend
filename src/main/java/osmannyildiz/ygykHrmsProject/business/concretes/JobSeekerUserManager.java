@@ -40,11 +40,7 @@ public class JobSeekerUserManager implements IJobSeekerUserService {
 
 	@Override
 	public DataResult<Boolean> userWithTcknExists(String tckn) {
-		ExampleMatcher matcher = ExampleMatcher.matchingAll().withIgnorePaths("id", "emailVerified");
-		JobSeekerUser exampleUser = new JobSeekerUser();
-		exampleUser.setTckn(tckn);
-		Example<JobSeekerUser> example = Example.of(exampleUser, matcher);
-		boolean exists = jobSeekerUserDao.exists(example);
+		boolean exists = jobSeekerUserDao.countByTckn(tckn) > 0;
 		return new SuccessDataResult<Boolean>(exists);
 	}
 	
