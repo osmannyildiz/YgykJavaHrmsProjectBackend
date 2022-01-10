@@ -26,4 +26,14 @@ public class EmployerUserManager implements IEmployerUserService {
 		return new SuccessDataResult<List<EmployerUser>>(employerUserDao.findAll());
 	}
 	
+	@Override
+	public DataResult<EmployerUser> getById(int id) {
+		return new SuccessDataResult<EmployerUser>(employerUserDao.getById(id));
+	}
+
+	@Override
+	public DataResult<EmployerUser> add(EmployerUser user) {
+		return new SuccessDataResult<EmployerUser>(employerUserDao.save(user));
+	}
+	
 }

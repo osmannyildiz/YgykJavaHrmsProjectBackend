@@ -8,5 +8,9 @@ import osmannyildiz.ygykHrmsProject.entities.concretes.User;
 public interface IUserService {
 	
 	DataResult<List<User>> getAll();
+	DataResult<User> getById(int id);
+	DataResult<User> add(User user);
+	DataResult<User> update(User user);
+	DataResult<Boolean> userWithEmailExists(String email);
 
 }

@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import osmannyildiz.coreProject.utilities.results.DataResult;
+import osmannyildiz.coreProject.utilities.results.ErrorResult;
+import osmannyildiz.coreProject.utilities.results.Result;
+import osmannyildiz.coreProject.utilities.results.SuccessResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IJobPositionService;
 import osmannyildiz.ygykHrmsProject.entities.concretes.JobPosition;
 
@@ -25,6 +30,16 @@ public class JobPositionsController {
 	@GetMapping("/getAll")
 	public DataResult<List<JobPosition>> getAll() {
 		return jobPositionService.getAll();
+	}
+	
+	@PostMapping("/add")
+	public Result add(@RequestBody JobPosition jobPosition) {
+		DataResult<JobPosition> result = jobPositionService.add(jobPosition);
+		if (!result.isSuccess()) {
+			return new ErrorResult(result.getMessage());
+		}
+		
+		return new SuccessResult(result.getMessage());
 	}
 
 }
