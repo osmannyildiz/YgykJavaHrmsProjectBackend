@@ -3,8 +3,7 @@ package osmannyildiz.ygykHrmsProject.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import osmannyildiz.coreProject.utilities.results.DataResult;
@@ -27,6 +26,19 @@ public class JobPositionManager implements IJobPositionService {
 	@Override
 	public DataResult<List<JobPosition>> getAll() {
 		return new SuccessDataResult<List<JobPosition>>(jobPositionDao.findAll());
+	}
+	
+	@Override
+	public DataResult<List<JobPosition>> getAllWithSortingByName(boolean descending) {
+		Sort.Direction direction = Sort.Direction.ASC;
+		if (descending)
+			direction = Sort.Direction.DESC;
+		
+		Sort sort = Sort.by(direction, "name");
+		return new SuccessDataResult<List<JobPosition>>(
+			jobPositionDao.findAll(sort), 
+			"İş pozisyonları listelendi."
+		);
 	}
 
 	@Override

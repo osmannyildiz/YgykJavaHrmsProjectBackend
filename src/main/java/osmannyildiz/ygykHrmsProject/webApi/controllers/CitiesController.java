@@ -14,33 +14,28 @@ import osmannyildiz.coreProject.utilities.results.DataResult;
 import osmannyildiz.coreProject.utilities.results.ErrorResult;
 import osmannyildiz.coreProject.utilities.results.Result;
 import osmannyildiz.coreProject.utilities.results.SuccessResult;
-import osmannyildiz.ygykHrmsProject.business.abstracts.IJobPositionService;
-import osmannyildiz.ygykHrmsProject.entities.concretes.JobPosition;
+import osmannyildiz.ygykHrmsProject.business.abstracts.ICityService;
+import osmannyildiz.ygykHrmsProject.entities.concretes.City;
 
 @RestController
-@RequestMapping("/api/jobPositions")
-public class JobPositionsController {
+@RequestMapping("/api/cities")
+public class CitiesController {
 	
-	private IJobPositionService jobPositionService;
+	private ICityService cityService;
 	
 	@Autowired
-	public JobPositionsController(IJobPositionService jobPositionService) {
-		this.jobPositionService = jobPositionService;
+	public CitiesController(ICityService cityService) {
+		this.cityService = cityService;
 	}
 
-	@GetMapping("/getAll")
-	public DataResult<List<JobPosition>> getAll() {
-		return jobPositionService.getAll();
-	}
-	
 	@GetMapping("/getAllWithSortingByName")
-	public DataResult<List<JobPosition>> getAllWithSortingByName(@RequestParam boolean descending) {
-		return jobPositionService.getAllWithSortingByName(descending);
+	public DataResult<List<City>> getAllWithSortingByName(@RequestParam boolean descending) {
+		return cityService.getAllWithSortingByName(descending);
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition) {
-		DataResult<JobPosition> result = jobPositionService.add(jobPosition);
+	public Result add(@RequestBody City city) {
+		DataResult<City> result = cityService.add(city);
 		if (!result.isSuccess()) {
 			return new ErrorResult(result.getMessage());
 		}
