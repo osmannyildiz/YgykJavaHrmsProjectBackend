@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +28,8 @@ public class User {
 	@Column(name="id")
 	protected int id;
 
+	@Email
+	@NotBlank
 	@Column(name="email")
 	protected String email;
 

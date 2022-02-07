@@ -35,6 +35,11 @@ public class UserManager implements IUserService {
 	}
 	
 	@Override
+	public DataResult<User> getByEmail(String email) {
+		return new SuccessDataResult<User>(userDao.getByEmail(email));
+	}
+	
+	@Override
 	public DataResult<User> add(User user) {
 		return new SuccessDataResult<User>(userDao.save(user));
 	}

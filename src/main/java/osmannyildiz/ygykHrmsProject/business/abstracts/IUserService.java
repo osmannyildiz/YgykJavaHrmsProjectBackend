@@ -9,6 +9,7 @@ public interface IUserService {
 	
 	DataResult<List<User>> getAll();
 	DataResult<User> getById(int id);
+	DataResult<User> getByEmail(String email);
 	DataResult<User> add(User user);
 	DataResult<User> update(User user);
 	DataResult<Boolean> userWithEmailExists(String email);

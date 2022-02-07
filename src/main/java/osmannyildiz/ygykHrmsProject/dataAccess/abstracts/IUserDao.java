@@ -6,6 +6,7 @@ import osmannyildiz.ygykHrmsProject.entities.concretes.User;
 
 public interface IUserDao extends JpaRepository<User, Integer> {
 	
+	User getByEmail(String email);
 	int countByEmail(String email);
 
 }
