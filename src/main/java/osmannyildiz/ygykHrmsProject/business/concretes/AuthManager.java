@@ -15,11 +15,13 @@ import osmannyildiz.coreProject.utilities.results.SuccessResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IAuthService;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IEmployerUserService;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IJobSeekerUserService;
+import osmannyildiz.ygykHrmsProject.business.abstracts.IResumeService;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IUserService;
 import osmannyildiz.ygykHrmsProject.dataAccess.abstracts.IJobSeekerUserDao;
 import osmannyildiz.ygykHrmsProject.dataAccess.abstracts.IUserDao;
 import osmannyildiz.ygykHrmsProject.entities.concretes.EmployerUser;
 import osmannyildiz.ygykHrmsProject.entities.concretes.JobSeekerUser;
+import osmannyildiz.ygykHrmsProject.entities.concretes.Resume;
 import osmannyildiz.ygykHrmsProject.entities.concretes.User;
 
 @Service
@@ -28,14 +30,16 @@ public class AuthManager implements IAuthService {
 	private IUserService userService;
 	private IJobSeekerUserService jobSeekerUserService;
 	private IEmployerUserService employerUserService;
+	private IResumeService resumeService;
 	private IMernisService mernisService;
 	private IEmailService emailService;
 
 	@Autowired
-	public AuthManager(IUserService userService, IJobSeekerUserService jobSeekerUserService, IEmployerUserService employerUserService) {
+	public AuthManager(IUserService userService, IJobSeekerUserService jobSeekerUserService, IEmployerUserService employerUserService, IResumeService resumeService) {
 		this.userService = userService;
 		this.jobSeekerUserService = jobSeekerUserService;
 		this.employerUserService = employerUserService;
+		this.resumeService = resumeService;
 		
 		// TODO Make these work with the dependency injection
 		this.mernisService = new MockMernisService();
@@ -65,6 +69,10 @@ public class AuthManager implements IAuthService {
 		if (!addResult.isSuccess()) {
 			return new ErrorResult(addResult.getMessage());
 		}
+		
+		Resume resume = new Resume();
+		resume.setJobSeekerUserId(addResult.getData().getId());
+		resumeService.add(resume);
 		
 		emailService.send("noreply@kodlama.io", jobSeekerUser.getEmail(), "Hesap Doğrulama", "Hesabınızı doğrulamak için şu linke tıklayın: <a href='example.com'>example.com</a>");
 		return new SuccessResult("İş arayan kullanıcı kaydı başarıyla gerçekleştirildi.");

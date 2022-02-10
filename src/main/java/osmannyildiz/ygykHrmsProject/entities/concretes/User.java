@@ -33,8 +33,8 @@ public class User {
 	@Column(name="email")
 	protected String email;
 
-	@Column(name="password_hash")
-	protected String passwordHash;
+	@Column(name="password")
+	protected String password;
 
 	@Column(name="email_verified")
 	protected boolean emailVerified;

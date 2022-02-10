@@ -3,9 +3,10 @@ package osmannyildiz.ygykHrmsProject.entities.concretes;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -19,28 +20,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="job_seeker_users")
-@PrimaryKeyJoinColumn(name="user_id")
+@Table(name="resume_images")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "resume"})
-public class JobSeekerUser extends User {
+public class ResumeImage {
 	
-	@NotBlank
-	@Column(name="name")
-	protected String name;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	protected int id;
 
 	@NotBlank
-	@Column(name="surname")
-	protected String surname;
-
-	@NotBlank
-	@Column(name="tckn")
-	protected String tckn;
+	@Column(name="image_url")
+	protected String imageUrl;
 	
-	@NotBlank
-	@Column(name="birth_year")
-	protected String birthYear;
-	
-	@OneToOne(mappedBy="user")
+	@ManyToOne
+	@JoinColumn(name="resume_id")
 	protected Resume resume;
 
 }
