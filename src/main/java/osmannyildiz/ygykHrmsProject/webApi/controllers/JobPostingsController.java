@@ -27,6 +27,7 @@ import osmannyildiz.coreProject.utilities.results.Result;
 import osmannyildiz.coreProject.utilities.results.SuccessDataResult;
 import osmannyildiz.coreProject.utilities.results.SuccessResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IJobPostingService;
+import osmannyildiz.ygykHrmsProject.business.constants.Messages;
 import osmannyildiz.ygykHrmsProject.entities.concretes.JobPosting;
 import osmannyildiz.ygykHrmsProject.entities.dtos.JobPostingViewDto;
 
@@ -48,7 +49,7 @@ public class JobPostingsController {
 		for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
 			errors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		return new ErrorDataResult<Object>(errors, "Lütfen doğrulama hatalarını düzeltip tekrar deneyin.");
+		return new ErrorDataResult<Object>(errors, Messages.fixValidationErrors);
 	}
 	
 	@GetMapping("/getAllActive")

@@ -25,6 +25,7 @@ import osmannyildiz.coreProject.utilities.results.ErrorResult;
 import osmannyildiz.coreProject.utilities.results.Result;
 import osmannyildiz.coreProject.utilities.results.SuccessResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.ICityService;
+import osmannyildiz.ygykHrmsProject.business.constants.Messages;
 import osmannyildiz.ygykHrmsProject.entities.concretes.City;
 
 @RestController
@@ -45,7 +46,7 @@ public class CitiesController {
 		for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
 			errors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		return new ErrorDataResult<Object>(errors, "Lütfen doğrulama hatalarını düzeltip tekrar deneyin.");
+		return new ErrorDataResult<Object>(errors, Messages.fixValidationErrors);
 	}
 
 	@GetMapping("/getAllWithSortingByName")

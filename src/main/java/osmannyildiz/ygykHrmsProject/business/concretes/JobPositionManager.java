@@ -45,7 +45,7 @@ public class JobPositionManager implements IJobPositionService {
 	public DataResult<JobPosition> add(JobPosition jobPosition) {
 		// TODO Validation
 		
-		boolean nameExists = jobPositionWithNameExists(jobPosition.getName()).getData();
+		boolean nameExists = existsWithName(jobPosition.getName()).getData();
 		if (nameExists) {
 			return new ErrorDataResult<JobPosition>("Bu isimde bir iş pozisyonu halihazırda mevcut.");
 		}
@@ -54,7 +54,7 @@ public class JobPositionManager implements IJobPositionService {
 	}
 
 	@Override
-	public DataResult<Boolean> jobPositionWithNameExists(String name) {
+	public DataResult<Boolean> existsWithName(String name) {
 		boolean exists = jobPositionDao.countByName(name) > 0;
 		return new SuccessDataResult<Boolean>(exists);
 	}

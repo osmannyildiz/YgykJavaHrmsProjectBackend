@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import osmannyildiz.coreProject.utilities.results.ErrorDataResult;
 import osmannyildiz.coreProject.utilities.results.Result;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IAuthService;
+import osmannyildiz.ygykHrmsProject.business.constants.Messages;
 import osmannyildiz.ygykHrmsProject.entities.concretes.EmployerUser;
 import osmannyildiz.ygykHrmsProject.entities.concretes.JobSeekerUser;
 
@@ -42,7 +43,7 @@ public class AuthController {
 		for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
 			errors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		return new ErrorDataResult<Object>(errors, "Lütfen doğrulama hatalarını düzeltip tekrar deneyin.");
+		return new ErrorDataResult<Object>(errors, Messages.fixValidationErrors);
 	}
 	
 	@PostMapping("/registerJobSeekerUser")

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import osmannyildiz.coreProject.utilities.results.DataResult;
 import osmannyildiz.coreProject.utilities.results.ErrorDataResult;
 import osmannyildiz.ygykHrmsProject.business.abstracts.IJobSeekerUserService;
+import osmannyildiz.ygykHrmsProject.business.constants.Messages;
 import osmannyildiz.ygykHrmsProject.entities.concretes.JobSeekerUser;
 
 @RestController
@@ -37,7 +38,7 @@ public class JobSeekersController {
 		for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
 			errors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		return new ErrorDataResult<Object>(errors, "Lütfen doğrulama hatalarını düzeltip tekrar deneyin.");
+		return new ErrorDataResult<Object>(errors, Messages.fixValidationErrors);
 	}
 
 	@GetMapping("/getAll")

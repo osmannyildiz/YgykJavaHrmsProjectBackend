@@ -38,6 +38,7 @@ import osmannyildiz.ygykHrmsProject.business.abstracts.IResumeTechnologyService;
 import osmannyildiz.ygykHrmsProject.business.abstracts.ITemporaryFileService;
 import osmannyildiz.ygykHrmsProject.business.concretes.CloudinaryImageService;
 import osmannyildiz.ygykHrmsProject.business.concretes.TemporaryFileService;
+import osmannyildiz.ygykHrmsProject.business.constants.Messages;
 import osmannyildiz.ygykHrmsProject.entities.concretes.Resume;
 import osmannyildiz.ygykHrmsProject.entities.concretes.ResumeEducation;
 import osmannyildiz.ygykHrmsProject.entities.concretes.ResumeExperience;
@@ -85,7 +86,7 @@ public class ResumesController {
 		for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
 			errors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		return new ErrorDataResult<Object>(errors, "Lütfen doğrulama hatalarını düzeltip tekrar deneyin.");
+		return new ErrorDataResult<Object>(errors, Messages.fixValidationErrors);
 	}
 	
 	@GetMapping("/getById")

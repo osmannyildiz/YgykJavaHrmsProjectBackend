@@ -24,19 +24,19 @@ import osmannyildiz.coreProject.utilities.results.ErrorDataResult;
 import osmannyildiz.coreProject.utilities.results.ErrorResult;
 import osmannyildiz.coreProject.utilities.results.Result;
 import osmannyildiz.coreProject.utilities.results.SuccessResult;
-import osmannyildiz.ygykHrmsProject.business.abstracts.IJobPositionService;
+import osmannyildiz.ygykHrmsProject.business.abstracts.IJobWorkHoursTypeService;
 import osmannyildiz.ygykHrmsProject.business.constants.Messages;
-import osmannyildiz.ygykHrmsProject.entities.concretes.JobPosition;
+import osmannyildiz.ygykHrmsProject.entities.concretes.JobWorkHoursType;
 
 @RestController
-@RequestMapping("/api/jobPositions")
-public class JobPositionsController {
+@RequestMapping("/api/jobWorkHoursTypes")
+public class JobWorkHoursTypesController {
 	
-	private IJobPositionService jobPositionService;
+	private IJobWorkHoursTypeService jobWorkHoursTypeService;
 	
 	@Autowired
-	public JobPositionsController(IJobPositionService jobPositionService) {
-		this.jobPositionService = jobPositionService;
+	public JobWorkHoursTypesController(IJobWorkHoursTypeService jobWorkHoursTypeService) {
+		this.jobWorkHoursTypeService = jobWorkHoursTypeService;
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
@@ -50,18 +50,18 @@ public class JobPositionsController {
 	}
 
 	@GetMapping("/getAll")
-	public DataResult<List<JobPosition>> getAll() {
-		return jobPositionService.getAll();
+	public DataResult<List<JobWorkHoursType>> getAll() {
+		return jobWorkHoursTypeService.getAll();
 	}
 	
 	@GetMapping("/getAllWithSortingByName")
-	public DataResult<List<JobPosition>> getAllWithSortingByName(@RequestParam boolean descending) {
-		return jobPositionService.getAllWithSortingByName(descending);
+	public DataResult<List<JobWorkHoursType>> getAllWithSortingByName(@RequestParam boolean descending) {
+		return jobWorkHoursTypeService.getAllWithSortingByName(descending);
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody @Valid JobPosition jobPosition) {
-		DataResult<JobPosition> result = jobPositionService.add(jobPosition);
+	public Result add(@RequestBody @Valid JobWorkHoursType jobWorkHoursType) {
+		DataResult<JobWorkHoursType> result = jobWorkHoursTypeService.add(jobWorkHoursType);
 		if (!result.isSuccess()) {
 			return new ErrorResult(result.getMessage());
 		}

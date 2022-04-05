@@ -10,6 +10,6 @@ public interface IJobPositionService {
 	DataResult<List<JobPosition>> getAll();
 	DataResult<List<JobPosition>> getAllWithSortingByName(boolean descending);
 	DataResult<JobPosition> add(JobPosition jobPosition);
-	DataResult<Boolean> jobPositionWithNameExists(String name);
+	DataResult<Boolean> existsWithName(String name);
 
 }
