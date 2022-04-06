@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="job_postings")
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", /* other 5 referencing properties */})
 public class JobPosting {
 	
 	@Id
@@ -55,11 +58,19 @@ public class JobPosting {
 	protected EmployerUser employer;
 	
 	@ManyToOne
-	@JoinColumn(name="job_position_id")
-	protected JobPosition jobPosition;
+	@JoinColumn(name="position_id")
+	protected JobPosition position;
 	
 	@ManyToOne
 	@JoinColumn(name="city_id")
 	protected City city;
+	
+	@ManyToOne
+	@JoinColumn(name="location_type_id")
+	protected JobLocationType locationType;
+	
+	@ManyToOne
+	@JoinColumn(name="work_hours_type_id")
+	protected JobWorkHoursType workHoursType;
 
 }

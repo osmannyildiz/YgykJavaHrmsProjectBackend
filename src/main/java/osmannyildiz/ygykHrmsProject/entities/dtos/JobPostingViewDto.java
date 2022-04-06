@@ -22,7 +22,7 @@ public class JobPostingViewDto {
 	public JobPostingViewDto(JobPosting jobPosting) {
 		this.id = jobPosting.getId();
 		this.employerCompanyName = jobPosting.getEmployer().getCompanyName();
-		this.jobPositionName = jobPosting.getJobPosition().getName();
+		this.jobPositionName = jobPosting.getPosition().getName();
 		this.openings = jobPosting.getOpenings();
 		this.datePublished = jobPosting.getDatePublished();
 		this.applicationDeadline = jobPosting.getApplicationDeadline();

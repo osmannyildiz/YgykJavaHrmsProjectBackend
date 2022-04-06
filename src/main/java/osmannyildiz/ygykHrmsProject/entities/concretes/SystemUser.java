@@ -19,4 +19,7 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name="user_id")
 public class SystemUser extends User {
 	
+	@Column(name="is_admin")
+	protected boolean isAdmin;
+	
 }
