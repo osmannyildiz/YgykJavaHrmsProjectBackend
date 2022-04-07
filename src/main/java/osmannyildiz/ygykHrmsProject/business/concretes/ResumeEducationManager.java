@@ -25,7 +25,7 @@ public class ResumeEducationManager implements IResumeEducationService {
 
 	@Override
 	public DataResult<List<ResumeEducation>> getAllByResumeId(int resumeId) {
-		return new SuccessDataResult<List<ResumeEducation>>(resumeEducationDao.getByResumeId(resumeId));
+		return new SuccessDataResult<List<ResumeEducation>>(resumeEducationDao.getAllByResumeId(resumeId));
 	}
 
 	@Override

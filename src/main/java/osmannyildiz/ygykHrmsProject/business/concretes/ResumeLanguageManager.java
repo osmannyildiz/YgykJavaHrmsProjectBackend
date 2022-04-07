@@ -25,7 +25,7 @@ public class ResumeLanguageManager implements IResumeLanguageService {
 
 	@Override
 	public DataResult<List<ResumeLanguage>> getAllByResumeId(int resumeId) {
-		return new SuccessDataResult<List<ResumeLanguage>>(resumeLanguageDao.getByResumeId(resumeId));
+		return new SuccessDataResult<List<ResumeLanguage>>(resumeLanguageDao.getAllByResumeId(resumeId));
 	}
 
 	@Override

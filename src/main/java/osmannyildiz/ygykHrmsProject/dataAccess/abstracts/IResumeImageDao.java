@@ -10,6 +10,6 @@ import osmannyildiz.ygykHrmsProject.entities.concretes.ResumeImage;
 public interface IResumeImageDao extends JpaRepository<ResumeImage, Integer> {
 	
 	@Query("from ResumeImage where resume.jobSeekerUserId=:resumeId")
-	List<ResumeImage> getByResumeId(int resumeId);
+	List<ResumeImage> getAllByResumeId(int resumeId);
 
 }

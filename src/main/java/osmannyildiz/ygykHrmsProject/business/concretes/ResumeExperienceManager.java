@@ -25,7 +25,7 @@ public class ResumeExperienceManager implements IResumeExperienceService {
 
 	@Override
 	public DataResult<List<ResumeExperience>> getAllByResumeId(int resumeId) {
-		return new SuccessDataResult<List<ResumeExperience>>(resumeExperienceDao.getByResumeId(resumeId));
+		return new SuccessDataResult<List<ResumeExperience>>(resumeExperienceDao.getAllByResumeId(resumeId));
 	}
 
 	@Override

@@ -10,6 +10,6 @@ import osmannyildiz.ygykHrmsProject.entities.concretes.ResumeEducation;
 public interface IResumeEducationDao extends JpaRepository<ResumeEducation, Integer> {
 	
 	@Query("from ResumeEducation where resume.jobSeekerUserId=:resumeId")
-	List<ResumeEducation> getByResumeId(int resumeId);
+	List<ResumeEducation> getAllByResumeId(int resumeId);
 
 }

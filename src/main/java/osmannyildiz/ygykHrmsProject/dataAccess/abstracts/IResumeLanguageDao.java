@@ -10,6 +10,6 @@ import osmannyildiz.ygykHrmsProject.entities.concretes.ResumeLanguage;
 public interface IResumeLanguageDao extends JpaRepository<ResumeLanguage, Integer> {
 	
 	@Query("from ResumeLanguage where resume.jobSeekerUserId=:resumeId")
-	List<ResumeLanguage> getByResumeId(int resumeId);
+	List<ResumeLanguage> getAllByResumeId(int resumeId);
 
 }

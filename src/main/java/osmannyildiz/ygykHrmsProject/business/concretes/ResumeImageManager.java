@@ -25,7 +25,7 @@ public class ResumeImageManager implements IResumeImageService {
 
 	@Override
 	public DataResult<List<ResumeImage>> getAllByResumeId(int resumeId) {
-		return new SuccessDataResult<List<ResumeImage>>(resumeImageDao.getByResumeId(resumeId));
+		return new SuccessDataResult<List<ResumeImage>>(resumeImageDao.getAllByResumeId(resumeId));
 	}
 
 	@Override

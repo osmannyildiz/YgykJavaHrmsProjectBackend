@@ -25,7 +25,7 @@ public class ResumeTechnologyManager implements IResumeTechnologyService {
 
 	@Override
 	public DataResult<List<ResumeTechnology>> getAllByResumeId(int resumeId) {
-		return new SuccessDataResult<List<ResumeTechnology>>(resumeTechnologyDao.getByResumeId(resumeId));
+		return new SuccessDataResult<List<ResumeTechnology>>(resumeTechnologyDao.getAllByResumeId(resumeId));
 	}
 
 	@Override

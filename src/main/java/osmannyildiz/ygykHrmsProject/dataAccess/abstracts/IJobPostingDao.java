@@ -8,10 +8,10 @@ import osmannyildiz.ygykHrmsProject.entities.concretes.JobPosting;
 
 public interface IJobPostingDao extends JpaRepository<JobPosting, Integer> {
 	
-	List<JobPosting> getByActive(boolean active);
-	List<JobPosting> getByActiveOrderByApplicationDeadlineAsc(boolean active);
-	List<JobPosting> getByActiveOrderByApplicationDeadlineDesc(boolean active);
-	List<JobPosting> getByEmployerId(int employerId);
-	List<JobPosting> getByActiveAndEmployerId(boolean active, int employerId);
+	List<JobPosting> getAllByActive(boolean active);
+	List<JobPosting> getAllByActiveOrderByApplicationDeadlineAsc(boolean active);
+	List<JobPosting> getAllByActiveOrderByApplicationDeadlineDesc(boolean active);
+	List<JobPosting> getAllByEmployerId(int employerId);
+	List<JobPosting> getAllByActiveAndEmployerId(boolean active, int employerId);
 
 }

@@ -43,21 +43,21 @@ public class JobPostingManager implements IJobPostingService {
 
 	@Override
 	public DataResult<List<JobPosting>> getAllByEmployerId(int employerId) {
-		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByEmployerId(employerId), "İş ilanları listelendi.");
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getAllByEmployerId(employerId), "İş ilanları listelendi.");
 	}
 	
 	@Override
 	public DataResult<List<JobPosting>> getAllActive() {
-		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByActive(true), "İş ilanları listelendi.");
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getAllByActive(true), "İş ilanları listelendi.");
 	}
 
 	@Override
 	public DataResult<List<JobPosting>> getAllActiveWithSortingByApplicationDeadline(boolean descending) {
 		List<JobPosting> data;
 		if (descending) {
-			data = jobPostingDao.getByActiveOrderByApplicationDeadlineDesc(true);
+			data = jobPostingDao.getAllByActiveOrderByApplicationDeadlineDesc(true);
 		} else {
-			data = jobPostingDao.getByActiveOrderByApplicationDeadlineAsc(true);
+			data = jobPostingDao.getAllByActiveOrderByApplicationDeadlineAsc(true);
 		}
 		
 		return new SuccessDataResult<List<JobPosting>>(data, "İş ilanları listelendi.");
@@ -65,7 +65,7 @@ public class JobPostingManager implements IJobPostingService {
 
 	@Override
 	public DataResult<List<JobPosting>> getAllActiveByEmployerId(int employerId) {
-		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByActiveAndEmployerId(true, employerId), "İş ilanları listelendi.");
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getAllByActiveAndEmployerId(true, employerId), "İş ilanları listelendi.");
 	}
 
 	@Override
